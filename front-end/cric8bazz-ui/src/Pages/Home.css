@@ -1,0 +1,39 @@
+.home-header{
+    background-color: rgb(24, 244, 163);
+    padding: 10px 20px;
+    margin-bottom: 50px;
+}
+
+.first-chart{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:flex-start;
+    padding: 20px;
+    background-color: antiquewhite;
+    margin-bottom: 30px;
+}
+.second-chart{
+    padding: 20px;
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    background-color: rgb(172, 236, 225);
+    width: 100%;
+}
+.teams{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    justify-content: flex-start;
+    margin-top: 50px;
+}
+.teams>p{
+    padding: 5px 10px;
+}
+.teams>p:hover{
+    background-color: antiquewhite;
+    border-radius: 5px;
+}

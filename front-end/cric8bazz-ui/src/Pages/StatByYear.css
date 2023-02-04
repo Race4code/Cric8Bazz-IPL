@@ -1,0 +1,23 @@
+
+.stat-header>h1{
+    background-color: aquamarine;
+    padding: 10px 20px;
+    margin-bottom: 50px;
+}
+
+.extra-runs-chart{
+    padding: 20px;
+    background-color: aquamarine;
+    margin-bottom: 30px;
+}
+
+.economical-bowler-chart{
+    padding: 20px;
+    background-color: aquamarine;
+    margin-bottom: 30px;
+}
+.play-vs-win-chart{
+    padding: 20px;
+    background-color: aquamarine;
+    margin-bottom: 30px;
+}
