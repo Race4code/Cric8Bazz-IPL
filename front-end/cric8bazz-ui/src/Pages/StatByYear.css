@@ -1,23 +1,135 @@
 
 .stat-header>h1{
-    background-color: aquamarine;
-    padding: 10px 20px;
-    margin-bottom: 50px;
+    background: rgb(208,203,203);
+    background: linear-gradient(156deg, rgba(208,203,203,1) 0%, rgba(206,199,199,1) 41%, rgba(255,255,255,1) 59%, rgba(77,77,77,1) 100%);
+    padding: 10px 50px;
+    /* margin-bottom: 50px; */
+}
+.stat_by_year_first_chart{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.extra_runs-chart-title{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap:10px;
+}
+.extra_logo{
+    width: 50px;
+    height: 50px;
 }
 
 .extra-runs-chart{
-    padding: 20px;
-    background-color: aquamarine;
-    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* gap:30px; */
+    color:white;
+    margin-bottom: 0px !important;
+    padding: 20px 40px;
+    /* background-color: aquamarine; */
+    background: rgb(36,36,36);
+    background: linear-gradient(300deg, rgba(36,36,36,1) 0%, rgba(0,0,0,1) 41%, rgba(17,17,17,1) 59%, rgba(77,77,77,1) 100%);    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
+}
+.stat_by_year_first_chart{
+    margin-top:5vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.first-chart-statPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
+.economical-bowler-chart{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* gap:30px; */
+    flex-wrap: wrap;
+    padding: 20px 40px;
+    align-items: flex-start;
+    color:white;
+    background: rgb(36,36,36);
+    background: linear-gradient(156deg, rgba(36,36,36,1) 0%, rgba(0,0,0,1) 41%, rgba(17,17,17,1) 59%, rgba(77,77,77,1) 100%);
+    /* margin-bottom: 30px; */
 }
 
-.economical-bowler-chart{
-    padding: 20px;
-    background-color: aquamarine;
-    margin-bottom: 30px;
+.economical-bowler-chart-inner{
+    width:100%;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /* flex-wrap: wrap; */
+}
+.economial-bowler-chart-title{
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+    align-items: flex-end;
+}
+.economy-for-year{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
+.ball_logo{
+    width: 50px;
+    height: 50px;
 }
 .play-vs-win-chart{
-    padding: 20px;
-    background-color: aquamarine;
-    margin-bottom: 30px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 40px;
+    color:white;
+    background: rgb(36,36,36);
+    background: linear-gradient(300deg, rgba(36,36,36,1) 0%, rgba(0,0,0,1) 41%, rgba(17,17,17,1) 59%, rgba(77,77,77,1) 100%);    margin-bottom: 30px;
+    margin-bottom: 0px !important;
+}
+.play-vs-win-chart-inner{
+    /* margin-top: 50px; */
+    width: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.play-vs-win-image-title{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap:10px;
+}
+.play-vs-win-chart-title{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    /* gap:10px; */
+}
+.btn{
+    width: 50px;
+    height: 50px;
+}
+.win_logo{
+    height: 50px;
+    width: 50px;
+}
+.select-year>select{
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
 }

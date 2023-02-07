@@ -2,7 +2,7 @@ import React from 'react'
 import Home from './Pages/Home'
 import StatByYear from './Pages/StatByYear'
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
-import SharedLayout from './Pages/SharedLayout'
+import SharedLayout from './Components/SharedLayout'
 const App = () => {
   return (
     <BrowserRouter>

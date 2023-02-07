@@ -1,70 +1,99 @@
-import React from 'react'
-import {Chart} from 'react-google-charts'
+import React, { useEffect,useState } from 'react'
+import axios from 'axios'
 import './Home.css'
+import batsman from '../Assets/cricket.png'
+import bat_ball from '../Assets/bat_ball.png'
+import ipl_logo from '../Assets/ipl_logo.png'
+import Chart from '../Components/Chart'
 
+const url = "http://localhost:8000"
 const Home = () => {
- const data1 = [
-    ["Year", "Matches_Played"],
-    ["2008", 57],
-    ["2009", 45],
-    ["2010", 68],
-    ["2011", 70],
-    ["2012", 57],
-    ["2013", 76],
-    ["2014", 69],
-    ["2015", 50],
-    ["2016", 50],
-  ];
-  const teams=["CSK","RCB","KKR","RR","SRH"]
-  const data=[
-    ["Year","Matches_Won"],
-    ["2008",11],
-    ["2009",8],
-    ["2010",7],
-    ["2011",6],
-    ["2012",11],
-    ["2013",10],
-    ["2014",5],
-    ["2015",4],
-    ["2016",9],
-  ]
+  const [firstChartData,setFirstChartData] = useState([])
+  const [secondChartData,setSecondChartData] = useState([])
+  const [team,setTeam] = useState("Sunrisers Hyderabad")
+  const [teamList,setTeamList] = useState([])
+
+  useEffect(()=>{
+    // fetching total matches played per season in IPL
+    const fetch1 = axios(`${url}/allMatches`).then(res=>{
+      const temp = []
+      res.data.forEach(element => {
+        const list = Object.entries(element)
+        temp.push({"year":list[0][0],"matches":list[0][1]})
+      });
+      setFirstChartData(temp)
+    })
+    // fetching all teams name played in IPL 
+    const fetch2 = axios(`${url}/allTeams`).then(res=>{
+      console.log(res.data)
+      setTeamList(res.data)
+    })
+    const alldata = Promise.all([fetch1,fetch2])
+    alldata.then(res=>console.log(res)).catch(err=>console.log(err))
+  },[])
+
+  useEffect(()=>{
+      axios(`${url}/matchesWonByTeam/${team}`).then(res=>{
+        console.log(res)
+        const temp = []
+        res.data.forEach(element => {
+          const list = Object.entries(element)
+          temp.push({"year":list[0][0],"matches_won":list[0][1]})
+        });
+        setSecondChartData(temp)
+      }).catch(err=>{
+        console.log(err)
+      })
+  },[team])
   
-  const options = {
-    chart: {
-      title: "Matches Played Per year ",
-      subtitle: "Matches played per year in IPL between 2008-2015"
-    }
-  };
   return (
-    <div>
+    <div className='home-page'>
       <div className='home-header'>
-        <h1>IPL cricket data from <span>2008-2016</span></h1>
+        <img src={ipl_logo} alt="ipl_logo" className='ipl_logo'/>
+        <h1>Stat Data Visualiser <span>2008-2016</span></h1>
       </div>
-      <h2>Matches played per year in IPL</h2>
       <div className='first-chart'>
-        <Chart
-          chartType="Bar"
-          width="100%"
-          height="400px"
-          data={data1}
-          options={options}
-         />
+        <div>
+          <h2> Matches Played Per year in IPL</h2>
+          <img src={batsman} alt="cricket"/>
+        </div>
+        {
+          <Chart 
+            data={firstChartData} 
+            xDataKey="year" 
+            bar="matches" 
+            color="#82ca9d"
+            wide={730}
+            long={300}
+          />
+        }
       </div>
-    <h2>Matches Won by a team over all seasons of IPL</h2>
     <div className='second-chart'>
-      <div className='teams'>
-        <h3>Choose Team</h3>
-        {teams.map((item,index)=>{
-          return <p key={index}>{item}</p>
-        })}
+    <div className='second-chart-title'>
+        <h2>Matches won by Team over all seasons of IPL</h2>
+        <img src={bat_ball} alt="bat_ball" className='bat_ball'/>
       </div>
-    <Chart
-      chartType="Bar"
-      width="100%"
-      height="400px"
-      data={data}
-      options={options}
-    />
+      <div className='inner-second-chart'>
+        <div className='teams'>
+          <h3>Choose Team</h3>
+          <select value={team} onChange={(e)=>setTeam(e.target.value)} >
+          {teamList.map((item,index)=>{
+            return <option key={index} value={item}>{item}</option>
+          })}
+          </select>
+          <h3>{team}</h3>
+        </div>
+        {
+          <Chart 
+            data={secondChartData}  
+            xDataKey={"year"} 
+            bar={"matches_won"} 
+            color="teal"
+            wide={730}
+            long={300}
+          />
+        }
+      </div>  
     </div>
     </div>
   )

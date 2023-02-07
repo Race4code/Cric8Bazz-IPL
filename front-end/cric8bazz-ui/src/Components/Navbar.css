@@ -4,7 +4,9 @@
 }
 
 .navbar{
-    background-color: rgb(197, 238, 246);
+    background: rgb(62,62,62);
+    background: linear-gradient(156deg, rgba(62,62,62,1) 0%, rgba(0,0,0,1) 41%, rgba(0,0,0,1) 59%, rgba(77,77,77,1) 100%);
+    /* background-color: rgb(83, 74, 95); */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,23 +15,27 @@
 
 .navbar-logo>img{
     margin:5px 0px 0px 50px;
-    width: 200px;
-    height:80px;
+    width: 180px;
+    height: 60px;
 }
 .nav-items{
-    font-size: 25px;
+    font-size: 23px;
+    color:white;
     width: 50%;
     display: flex;
     justify-content: flex-start;
     gap:10%;
 }
 .nav-items>*{
-    padding: 10px 20px;
+    color:white !important;
+    padding: 5px 10px;
     border-radius: 10px;
 }
 .nav-items>*:hover{
-    background-color: rgb(60, 189, 221);
-    color:white !important;
+    /* background-color:teal; */
+    background: rgb(208,203,203);
+    background: linear-gradient(156deg, rgba(208,203,203,1) 0%, rgba(206,199,199,1) 41%, rgba(255,255,255,1) 59%, rgba(77,77,77,1) 100%);
+    color:rgb(0, 0, 0) !important;
 }
 @keyframes high {
     from{font-size: 25px;}
