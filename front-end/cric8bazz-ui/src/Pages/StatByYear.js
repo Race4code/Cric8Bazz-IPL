@@ -52,7 +52,7 @@ const StatByYear = () => {
       const temp=[]
       res.data.forEach(element => {
         const list = Object.entries(element)
-        temp.push({"Bowler Name":list[0][1],"Economy":list[3][1]})
+        temp.push({"Bowler Name":list[0][1],"Economy":(list[3][1]).toFixed(2)})
       });
       setSecondGraphData(temp)
     }).catch(err=>{

@@ -1,0 +1,8 @@
+.custom-tooltip{
+    text-transform: capitalize;
+    text-align: left;
+    color:black;
+    padding: 10px 20px;
+    border-radius:5px;
+    background-color: aliceblue;
+}

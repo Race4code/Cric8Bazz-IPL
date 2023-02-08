@@ -1,0 +1,4 @@
+Here we have all the queries that is required :
+
+1) For fetching the matches played per year of all the years in IPL
+

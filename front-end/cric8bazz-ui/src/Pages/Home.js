@@ -14,27 +14,37 @@ const Home = () => {
   const [teamList,setTeamList] = useState([])
 
   useEffect(()=>{
-    // fetching total matches played per season in IPL
-    const fetch1 = axios(`${url}/allMatches`).then(res=>{
+    console.log('call fetch')
+      const fetch1 = axios(`${url}/allMatches`).then(res=>{
       const temp = []
       res.data.forEach(element => {
         const list = Object.entries(element)
         temp.push({"year":list[0][0],"matches":list[0][1]})
       });
       setFirstChartData(temp)
+      sessionStorage.setItem("allMatches",JSON.stringify(temp))
     })
+
     // fetching all teams name played in IPL 
     const fetch2 = axios(`${url}/allTeams`).then(res=>{
-      console.log(res.data)
       setTeamList(res.data)
+      sessionStorage.setItem("allTeams",JSON.stringify(res.data))
     })
-    const alldata = Promise.all([fetch1,fetch2])
-    alldata.then(res=>console.log(res)).catch(err=>console.log(err))
+    // check is data is already fetched
+    if(sessionStorage.getItem("allMatches") && sessionStorage.getItem("allTeams")){
+      const temp1 = sessionStorage.getItem("allMatches")
+      const temp2 = sessionStorage.getItem("allTeams")
+      setFirstChartData(JSON.parse(temp1))
+      setTeamList(JSON.parse(temp2))
+    }else{
+      console.log('server call')
+      const alldata = Promise.all([fetch1,fetch2])
+      alldata.then(res=>console.log(res)).catch(err=>console.log(err))
+    }
   },[])
 
   useEffect(()=>{
       axios(`${url}/matchesWonByTeam/${team}`).then(res=>{
-        console.log(res)
         const temp = []
         res.data.forEach(element => {
           const list = Object.entries(element)

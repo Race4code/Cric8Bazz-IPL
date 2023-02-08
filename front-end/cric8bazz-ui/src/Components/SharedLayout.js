@@ -4,8 +4,8 @@ import { Outlet } from 'react-router-dom'
 const SharedLayout = () => {
   return (
     <div>
-        <Navbar/>
-        <Outlet/>
+      <Navbar/>
+      <Outlet/>
     </div>
   )
 }
