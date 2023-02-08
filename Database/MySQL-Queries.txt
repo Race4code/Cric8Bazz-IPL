@@ -1,4 +1,102 @@
-Here we have all the queries that is required :
+Database schema for this project
+
+Database has two tables :
+ 1) matches
+ 2) deliveries (contain ball by ball information)
+
+ -- Attributes of matches:
+    1) match_id
+    2) season 
+    3) team1
+    4) team2
+    5) winner
+
+-- Attributes of deliveries:
+    1) id
+    2) match_id
+    3) inning
+    4) batting_team
+    5) bowling_team
+    6) over
+    7) ball
+    9) bowler
+    10) wide_runs
+    11) bye_runs
+    12) legbye_runs
+    13) noball_runs,
+    14) penalty_runs
+    15) batsman_runs
+    16) extra_runs
+    17) total_runs
+
+NOTE : some columns of original data are droped in this schema.
+
+NOTE : GET THE IPL DATASET (https://www.kaggle.com/manasgarg/ipl)
+       The dataset is in csv format so you have to import it in mysql db 
+       via any method like using some scripts or directly via GUI of mysql
+       workbench.
+
+
+Here we have all the queries that are  required for this project :
 
 1) For fetching the matches played per year of all the years in IPL
+  
+  This query will get all distinct season from DB
+  -> select distinct(season) as seasons from matches order by seasons asc; 
+  
+  Now we loop through all season and get total matches played in each season
+  -> select count(match_id) from matches where season=2017;
+     Note : value season will passed as a variable in loop.
+  
+  finally we get all matches played in each season.
 
+
+2) Queries for matches won of all teams over all the years of IPL.
+   
+     This query will get all distinct season from DB
+   -> select distinct(season) from matches order by season asc;
+
+    for each season this query will fetch number of matches won in that season by a team
+   -> select count(match_id) from matches where (team1="Sunrisers Hyderabad" or team2="Sunrisers Hyderabad") and winner="Sunrisers Hyderabad" and season=2017;
+
+
+
+3) Queries for the year "YYYY" plot the extra runs conceded per team.
+   
+   This will fetch all distinct teams played in a particular season
+   -> select distinct(team1) from matches where season=2008; 
+
+    This will fetch extra runs conceded by a team in a particular year 
+   -> select sum(extra_runs) from deliveries where match_id in(select match_id from matches where season=2008 ) and bowling_team="Chennai Super Kings";
+
+
+4) Queries for the year "YYYY" plot the top economical bowlers.
+   
+   This will fetch all teams played in a particular season
+   -> select distinct(team1) from matches where season=2017;
+   
+   This will fetch match_id's for a particular season 
+   -> select distinct(match_id) from matches where season=2008;
+   
+   This will all bowlers who bowl in a particular season using the range of match_id that we get from previous call ^
+   -> select distinct(bowler) from deliveries where match_id between 1 and 59  ;
+   
+   This will get total runs spended by a particular bowler in a season
+   -> select sum(total_runs) from deliveries where (match_id between 1 and 59) and bowler="TS Mills";
+
+   This will get all match_id's in which a particular bowler has bowl.
+   -> select distinct(match_id) from deliveries where (match_id between 1 and 59) and bowler="TS Mills";
+   
+   This will get total number of overs delivered by a bowler in a match 
+   -> select count(distinct(`over`)) from deliveries where match_id=27 and bowler="TS Mills";
+
+5) Queries for the year "YYYY" plot a chart for matches played vs matches won for each team.
+   
+   This will get all teams played in a particular season
+   -> select distinct(team1) from matches where season=2008; 
+   
+   This will get total number of matches played by a team in a season
+   -> select count(match_id) from matches where (team1="Kolkata Knight Riders" or team2="Kolkata Knight Riders") and season=2008;
+   
+   This will get total number of matches win by a team in a season
+   -> select count(match_id) from matches where (team1="Kolkata Knight Riders" or team2="Kolkata Knight Riders") and season=2008 and winner="Kolkata Knight Riders";
