@@ -13,7 +13,7 @@
     box-shadow: 1px 1px 10px 1px rgb(193, 198, 199);
 }
 
-.navbar-logo>img{
+.web-logo{
     margin:5px 0px 0px 50px;
     width: 180px;
     height: 60px;
@@ -27,8 +27,8 @@
     gap:10%;
 }
 .nav-items>*{
-    color:white !important;
-    padding: 5px 10px;
+    color:white ;
+    padding: 5px 10px !important;
     border-radius: 10px;
 }
 .nav-items>*:hover{
