@@ -69,7 +69,6 @@ const StatByYear = () => {
         temp.push({"Team":list[0][1],"Play":list[1][1],"Win":list[2][1]})
       });
       setThirdGraphData(temp)
-      console.log("third graph")
     }).catch(err=>{
       console.log(err)
     })

@@ -14,8 +14,7 @@ const Home = () => {
   const [teamList,setTeamList] = useState([])
 
   useEffect(()=>{
-    console.log('call fetch')
-      const fetch1 = axios(`${url}/allMatches`).then(res=>{
+    const fetch1 = axios(`${url}/allMatches`).then(res=>{
       const temp = []
       res.data.forEach(element => {
         const list = Object.entries(element)
@@ -37,7 +36,6 @@ const Home = () => {
       setFirstChartData(JSON.parse(temp1))
       setTeamList(JSON.parse(temp2))
     }else{
-      console.log('server call')
       const alldata = Promise.all([fetch1,fetch2])
       alldata.then(res=>console.log(res)).catch(err=>console.log(err))
     }
@@ -86,11 +84,13 @@ const Home = () => {
       <div className='inner-second-chart'>
         <div className='teams'>
           <h3>Choose Team</h3>
-          <select value={team} onChange={(e)=>setTeam(e.target.value)} >
-          {teamList.map((item,index)=>{
-            return <option key={index} value={item}>{item}</option>
-          })}
-          </select>
+          <div className='select-team'>
+            <select value={team} onChange={(e)=>setTeam(e.target.value)} >
+              {teamList.map((item,index)=>{
+                return <option key={index} value={item}>{item}</option>
+              })}
+            </select>
+          </div>
           <h3>{team}</h3>
         </div>
         {

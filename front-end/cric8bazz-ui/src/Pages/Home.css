@@ -81,3 +81,9 @@ body{
     background-color: teal;
     border-radius: 5px;
 }
+.select-team>select{
+    cursor: pointer;
+    font-size: 15px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}

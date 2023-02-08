@@ -5,9 +5,7 @@ const Chart = ({data,xDataKey,bar,color,wide,long}) => {
 
   const CustomTooltip = ({active,payload})=>{
     if(active && payload && payload.length){
-      // console.log(payload)
       const temp = Object.entries(payload[0].payload);
-      // console.log(temp)
       return(
         <div className="custom-tooltip">
           {
@@ -19,6 +17,7 @@ const Chart = ({data,xDataKey,bar,color,wide,long}) => {
       )
     }
   }
+
   return (
     <div>
       <BarChart width={wide} height={long} data={data}>
@@ -26,7 +25,7 @@ const Chart = ({data,xDataKey,bar,color,wide,long}) => {
         <XAxis dataKey={xDataKey} />
         <YAxis />
         <Tooltip content={<CustomTooltip/>} />
-        <Legend />s
+        <Legend />
         <Bar dataKey={bar} fill={color} barSize={35} />
       </BarChart>
     </div>
